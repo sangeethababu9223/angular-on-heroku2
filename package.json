@@ -4,11 +4,13 @@
   "scripts": {
     "ng": "ng",
     "heroku-postbuild": "ng build --prod",
-    "start": "babel-node backend/server.js",
-    "build": "ng build",
+    "start": "npm run build && node backend/server.js",
+    "build": "ng build npm run clean && npm run build-babel",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s"
   },
   "engines": {
     "node": "12.18.4",
